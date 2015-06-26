@@ -29,6 +29,7 @@ This template set's up a few things for you, such as:
 ## What this template does not do for you?
 
 * Fully configure nginx, supervisor and the shell runner - you should fill in details yourself!;
+* This template will generate a lot of unwanted stuff. For example, this README.md, all the docs folders will be in the new project. You might want to take a look and remove them **before** commiting.
 
 ## To Do
 
