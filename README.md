@@ -26,6 +26,10 @@ This template set's up a few things for you, such as:
 * sample supervisor script for watching over the application, with the user of environment variables for deploy;
 * creates a generic index.html, located in ```<project_name>/templates``` folder and it's URL;
 
+## What this template does not do for you?
+
+* Fully configure nginx, supervisor and the shell runner - you should fill in details yourself!;
+
 ## To Do
 
 * Samples for celery worker and celery beat;
