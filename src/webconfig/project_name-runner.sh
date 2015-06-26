@@ -4,8 +4,8 @@ NAME="{{ project_name }}"
 DJANGODIR=/opt/apps/{{ project_name }}/src
 VIRTUALENVDIR=/opt/apps/.virtualenvs/{{ project_name }}/bin
 SOCKFILE=/opt/apps/{{ project_name }}/run/gunicorn.sock
-USER=app-runner
-GROUP=app-runner
+USER={{ user }}
+GROUP={{ group }}
 NUM_WORKERS=4
 # DJANGO_SETTINGS_MODULE= determinado por variavel de ambiente e pelo supervisor
 
