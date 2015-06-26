@@ -57,6 +57,12 @@ Take into account where you are storing your virtualenvs folder, in case of not 
 mkvirtualenv foo
 ```
 
+Install the desired version of Django (it should be higher equal or higher then 1.4, before that we did not have the template option on startproject).
+
+```bash
+pip install Django==<version>
+```
+
 Since this template scaffolds a lot of other things that are not just Django related,
 like docs, requirements, etc, you should use it where you want the root folder to be. That same directory should be ```git init``` or whatever command you use for version control. Like this, for project foo:
 
