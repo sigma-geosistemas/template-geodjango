@@ -73,13 +73,13 @@ USE_L10N = True
 USE_TZ = True
 
 STATICFILES_DIRS = (
-    os.path.abspath(os.path.join(BASE_DIR, "..","..","site","static")),
+
 )
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "site", "static"))
-MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..","..", "site", "media"))
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "site", "static"))
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "site", "media"))
 
 try:
     from .drf import *

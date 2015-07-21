@@ -10,7 +10,7 @@ def get_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 def generate_celery_schedule(apps):
-	"""Gera um schedule dinamico para todas as apps"""
+    """Gera um schedule dinamico para todas as apps"""
     schedule = {}
 
     for app in apps:
@@ -18,9 +18,9 @@ def generate_celery_schedule(apps):
         schedule_module = "{0}.schedule".format(app)
         
         try:
-        	module = import_module(schedule_module)
+            module = import_module(schedule_module)
         except ImportError:
-        	continue
+            continue
 
         tempSchedule = getattr(module, "CELERYBEAT_SCHEDULE", None)
         if tempSchedule:
