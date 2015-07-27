@@ -2,7 +2,6 @@ import os
 from .utils import get_env_variable
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = get_env_variable("SECRET_KEY")
 
 DEBUG = True
 
