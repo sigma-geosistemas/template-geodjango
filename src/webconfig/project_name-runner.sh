@@ -1,24 +1,34 @@
 #!/bin/bash
 
 NAME="{{ project_name }}"
-DJANGODIR=/opt/apps/{{ project_name }}/src
-VIRTUALENVDIR=/opt/apps/.virtualenvs/{{ project_name }}/bin
-SOCKFILE=/opt/apps/{{ project_name }}/run/gunicorn.sock
+
+VIRTUALENV_BASE_DIR=/opt/apps/.virtualenvs
+VIRTUALENV_DIR=$VIRTUALENV_BASE_DIR/{{ project_name }}/bin
+
+APP_BASE_DIR=/opt/apps/{{ project_name }}
+DJANGO_DIR=$APP_BASE_DIR/src
+
+# configure the sock file. create the directory if necessary
+SOCK_FILE=$APP_BASE_DIR/run/gunicorn.sock
+RUN_DIR=$(dirname $SOCK_FILE)
+test -d $RUN_DIR || mkdir -p $RUN_DIR
+
+# configure the log file. create the directory if necessary
+LOG_FILE=$APP_BASE_DIR/logs/supervisor-{{ project_name }}.log
+LOG_DIR=$(dirname $LOG_FILE)
+test -d $LOG_DIR || mkdir -p $LOG_DIR
+
+# user settings
 USER={{ user }}
 GROUP={{ group }}
+
 NUM_WORKERS=3
-DJANGO_SETTINGS_MODULE="{{ project_name }}.settings.production"
-export SECRET_KEY="<changethisinproduction>"
 
-# Activate the virtual environment
-cd $VIRTUALENVDIR
+cd $VIRTUALENV_DIR
 source activate
-cd $DJANGODIR
+cd $DJANGO_DIR
 
-export PYTHONPATH=$DJANGODIR:$PYTHONPATH
-
-RUNDIR=$(dirname $SOCKFILE)
-test -d $RUNDIR || mkdir -p $RUNDIR
+export PYTHONPATH=$DJANGO_DIR:$PYTHONPATH
 
 gunicorn {{ project_name }}.wsgi:application \
    --settings=$DJANGO_SETTINGS_MODULE \
@@ -26,5 +36,5 @@ gunicorn {{ project_name }}.wsgi:application \
    --workers $NUM_WORKERS \
    --user=$USER --group=$GROUP \
    --log-level=debug \
-   --bind=127.0.0.1:8004 \
+   --bind=127.0.0.1:8000 \
    --timeout 500

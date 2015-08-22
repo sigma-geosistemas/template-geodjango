@@ -1,4 +1,3 @@
-import os
 import raven
 from .base import *
 from .utils import get_env_variable
@@ -15,8 +14,7 @@ MIDDLEWARE_CLASSES = (
 ) + MIDDLEWARE_CLASSES
 
 RAVEN_CONFIG = {
-    'dsn': '__dsn__',
-    'release': raven.fetch_git_sha(os.path.dirname(__file__))
+    'dsn': '__dsn__'
 }
 
 # removing the browsable API - comment this if you WANT the browsable API in production.

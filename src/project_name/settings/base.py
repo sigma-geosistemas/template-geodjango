@@ -2,7 +2,9 @@ import os
 from .utils import get_env_variable
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 SECRET_KEY="helloworld"
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -77,8 +79,8 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "site", "static"))
-MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "site", "media"))
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "site", "static"))
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", ".." "site", "media"))
 
 try:
     from .drf import *
