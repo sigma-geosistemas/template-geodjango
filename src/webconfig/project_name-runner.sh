@@ -3,9 +3,9 @@
 NAME="{{ project_name }}"
 
 VIRTUALENV_BASE_DIR=/opt/apps/.virtualenvs
-VIRTUALENV_DIR=$VIRTUALENV_BASE_DIR/{{ project_name }}/bin
+VIRTUALENV_DIR=$VIRTUALENV_BASE_DIR/$NAME/bin
 
-APP_BASE_DIR=/opt/apps/{{ project_name }}
+APP_BASE_DIR=/opt/apps/$NAME
 DJANGO_DIR=$APP_BASE_DIR/src
 
 # configure the sock file. create the directory if necessary
@@ -14,7 +14,7 @@ RUN_DIR=$(dirname $SOCK_FILE)
 test -d $RUN_DIR || mkdir -p $RUN_DIR
 
 # configure the log file. create the directory if necessary
-LOG_FILE=$APP_BASE_DIR/logs/supervisor-{{ project_name }}.log
+LOG_FILE=$APP_BASE_DIR/logs/supervisor-$NAME.log
 LOG_DIR=$(dirname $LOG_FILE)
 test -d $LOG_DIR || mkdir -p $LOG_DIR
 
@@ -30,7 +30,7 @@ cd $DJANGO_DIR
 
 export PYTHONPATH=$DJANGO_DIR:$PYTHONPATH
 
-gunicorn {{ project_name }}.wsgi:application \
+gunicorn $NAME.wsgi:application \
    --settings=$DJANGO_SETTINGS_MODULE \
    --name $NAME \
    --workers $NUM_WORKERS \
