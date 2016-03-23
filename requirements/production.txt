@@ -2,3 +2,4 @@
 setproctitle
 gunicorn
 raven
+django-dbbackup

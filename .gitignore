@@ -63,3 +63,5 @@ celerybeat-schedule
 site/
 
 .~lock.*
+
+dbtoken
