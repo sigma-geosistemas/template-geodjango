@@ -1,0 +1,9 @@
+image: mdillon/postgis:9.4
+stages:
+    - build
+    - test
+    - deploy
+job1:
+    stage: build
+    script:
+        - echo "hello world from {{cookiecutter.app_name}}!"
