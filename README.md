@@ -15,6 +15,7 @@ This consists of:
 * redis;
 * django-dbbackup
 * django-mailgun
+* gitlab-ci integration (sample docker runner);
 
 ## What does this template do?
 
