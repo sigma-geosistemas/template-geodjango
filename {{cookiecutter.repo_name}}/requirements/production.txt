@@ -3,3 +3,4 @@ setproctitle
 gunicorn
 raven
 django-dbbackup
+django-mailgun

@@ -35,7 +35,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = '{{ project_name }}.urls'
+ROOT_URLCONF = '{{cookiecutter.app_name}}.urls'
 
 TEMPLATES = [
     {
@@ -55,12 +55,12 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+WSGI_APPLICATION = '{{cookiecutter.app_name}}.wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': '{{ project_name }}',
+        'NAME': '{{cookiecutter.app_name}}',
         'USER': get_env_variable("PGUSER"),
         'PASSWORD': get_env_variable("PGPASS"),
         'HOST': "localhost",

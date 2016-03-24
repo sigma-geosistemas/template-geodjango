@@ -7,7 +7,8 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 
-INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
+INSTALLED_APPS += ("raven.contrib.django.raven_compat",
+                   "dbbackup",)
 
 MIDDLEWARE_CLASSES = (
   'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
@@ -29,3 +30,7 @@ DBBACKUP_STORAGE = 'dbbackup.storage.dropbox_storage'
 DBBACKUP_TOKENS_FILEPATH = token_fp
 DBBACKUP_DROPBOX_APP_KEY = get_env_variable("DBBACKUP_DROP_APP_KEY")
 DBBACKUP_DROPBOX_APP_SECRET = get_env_variable("DBBACKUP_DROPBOX_APP_SECRET")
+
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = get_env_variable("MAILGUN_ACCESS_KEY")
+MAILGUN_SERVER_NAME = get_env_variable("MAILGUN_SERVER_NAME")

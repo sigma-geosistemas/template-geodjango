@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="{{ project_name }}"
+NAME="{{cookiecutter.repo_name}}"
 
 VIRTUALENV_BASE_DIR=/opt/apps/.virtualenvs
 VIRTUALENV_DIR=$VIRTUALENV_BASE_DIR/$NAME/bin
@@ -19,8 +19,8 @@ LOG_DIR=$(dirname $LOG_FILE)
 test -d $LOG_DIR || mkdir -p $LOG_DIR
 
 # user settings
-USER={{ user }}
-GROUP={{ group }}
+USER={{ cookiecutter|default("app-runner") }}
+GROUP={{ cookiecutter|default("app-runner") }}
 
 NUM_WORKERS=3
 
