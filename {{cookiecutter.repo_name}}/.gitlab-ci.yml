@@ -6,8 +6,8 @@ variables:
     POSTGRES_PASSWORD: $POSTGRES_USER
     PGUSER: $POSTGRES_USER
     PGPASS: $POSTGRES_USER
-    POSTGRES_DB: {{cookiecutter.app_name}}
-    PGDATABASE: {{cookiecutter.app_name}}
+    POSTGRES_DB: $POSTGRES_USER
+    PGDATABASE: $POSTGRES_USER
     DB_HOST: "mdillon__postgis"
     DEPENDENCIES: "python-dev python-pip python-virtualenv git libpq-dev postgresql-server-dev-9.4 postgresql-client-9.4 libgdal1-dev libgeos-dev"
     TEST_APPS: ""
