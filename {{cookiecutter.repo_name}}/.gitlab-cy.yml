@@ -3,12 +3,12 @@ services:
     - mdillon/postgis:9.4
 variables:
     POSTGRES_USER: "postgres"
-    POSTGRES_DB: $POSTGRES_USER
     POSTGRES_PASSWORD: $POSTGRES_USER
     PGUSER: $POSTGRES_USER
     PGPASS: $POSTGRES_USER
-    PGDATABASE: $POSTGRES_USER
-    DBHOST: "mdillon__postgis"
+    POSTGRES_DB: {{cookiecutter.app_name}}
+    PGDATABASE: {{cookiecutter.app_name}}
+    DB_HOST: "mdillon__postgis"
     DEPENDENCIES: "python-dev python-pip python-virtualenv git libpq-dev postgresql-server-dev-9.4 postgresql-client-9.4 libgdal1-dev libgeos-dev"
     TEST_APPS: ""
 stages:
@@ -20,7 +20,7 @@ before_script:
     - virtualenv env
     - source env/bin/activate
     - pip install -r requirements/tests.txt
-teste_django:
+test_django:
     stage: test
     script:
         - cd src/
