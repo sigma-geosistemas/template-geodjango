@@ -1,9 +1,27 @@
-image: mdillon/postgis:9.4
+image: python:2.7
+services:
+    - mdillon/postgis:9.4
+variables:
+    POSTGRES_USER: "postgres"
+    POSTGRES_DB: $POSTGRES_USER
+    POSTGRES_PASSWORD: $POSTGRES_USER
+    PGUSER: $POSTGRES_USER
+    PGPASS: $POSTGRES_USER
+    PGDATABASE: $POSTGRES_USER
+    DBHOST: "mdillon__postgis"
+    DEPENDENCIES: "python-dev python-pip python-virtualenv git libpq-dev postgresql-server-dev-9.4 postgresql-client-9.4 libgdal1-dev libgeos-dev"
+    TEST_APPS: ""
 stages:
     - build
     - test
     - deploy
-job1:
-    stage: build
+before_script:
+    - apt-get update -qq && apt-get install -y -qq $DEPENDENCIES
+    - virtualenv env
+    - source env/bin/activate
+    - pip install -r requirements/tests.txt
+teste_django:
+    stage: test
     script:
-        - echo "hello world from {{cookiecutter.app_name}}!"
+        - cd src/
+        - coverage run --source='.' manage.py test $TEST_APPS --settings={{cookiecutter.app_name}}.settings.tests
