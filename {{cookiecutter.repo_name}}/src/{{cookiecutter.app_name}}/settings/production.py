@@ -5,7 +5,7 @@ from .utils import get_env_variable
 
 DEBUG = False
 TEMPLATE_DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["{{cookiecutter.app_name}}.sigmageosistemas.com.br", ]
 
 INSTALLED_APPS += ("raven.contrib.django.raven_compat",
                    "dbbackup",)
