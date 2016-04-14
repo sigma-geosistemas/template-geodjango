@@ -24,5 +24,4 @@ test_django:
     stage: test
     script:
         - cd src/
-        - coverage run --source='.' manage.py test $TEST_APPS --settings={{cookiecutter.app_name}}.settings.tests
-        - coverage report
+        - coverage run --source='.' manage.py test $TEST_APPS --settings={{cookiecutter.app_name}}.settings.tests && coverage report
