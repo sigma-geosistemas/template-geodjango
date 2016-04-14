@@ -1,7 +1,8 @@
 {
   "full_name": "Sigma Geosistemas LTDA",
   "email": "atendimento@sigmageosistemas.com.br",
-  "github_username": "yourname",
+  "gitlab_username": "yourname",
+  "gitlab_server": "http://gitlab.sigmageosistemas.com.br",
   "gitlab_namespace": "corporativo",
   "project_name": "nome-projeto",
   "repo_name": "nome-projeto",

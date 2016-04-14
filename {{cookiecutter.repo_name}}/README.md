@@ -16,5 +16,5 @@
 
 ## Funcionalidades
 
-[status-master]: http://gitlab.sigmageosistemas.com.br/{{cookiecutter.gitlab_namespace}}/{{cookiecutter.repo_name}}/badges/master/build.svg "status master"
-[status-dev]: http://gitlab.sigmageosistemas.com.br/{{cookiecutter.gitlab_namespace}}/{{cookiecutter.repo_name}}/badges/dev/build.svg "status dev"
+[status-master]: {{cookiecutter.gitlab_server}}/{{cookiecutter.gitlab_namespace}}/{{cookiecutter.repo_name}}/badges/master/build.svg "status master"
+[status-dev]: {{cookiecutter.gitlab_server}}/{{cookiecutter.gitlab_namespace}}/{{cookiecutter.repo_name}}/badges/dev/build.svg "status dev"
