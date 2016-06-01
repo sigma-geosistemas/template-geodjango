@@ -9,7 +9,7 @@
   "app_name": "projeto",
   "install_database": "True",
   "postgresql_version": "9.5",
-  "postgis": "2.2",
+  "postgis_version": "2.2",
   "project_short_description": "Descrição",
   "release_date": "2016-02-01",
   "year": "2016",
