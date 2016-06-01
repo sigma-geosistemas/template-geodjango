@@ -3,3 +3,6 @@ coverage
 mock>=1.0.1
 flake8>=2.1.0
 tox>=1.7.0
+django-test-without-migrations
+pysqlite
+pyspatialite --pre --global-option=build_ext --global-option="-I/usr/include:/usr/local/include" --global-option="-L/usr/lib"

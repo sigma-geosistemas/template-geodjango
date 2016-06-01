@@ -1,6 +1,6 @@
 -r base.txt
 setproctitle
 gunicorn
-raven
+opbeat
 django-dbbackup
 django-mailgun

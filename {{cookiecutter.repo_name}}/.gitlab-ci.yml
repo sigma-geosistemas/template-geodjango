@@ -9,7 +9,7 @@ variables:
     POSTGRES_DB: $POSTGRES_USER
     PGDATABASE: $POSTGRES_USER
     DB_HOST: "mdillon__postgis"
-    DEPENDENCIES: "python-dev python-pip python-virtualenv git libpq-dev postgresql-server-dev-9.4 postgresql-client-9.4 libgdal1-dev libgeos-dev"
+    DEPENDENCIES: "python-dev python-pip python-virtualenv git libpq-dev postgresql-server-dev-9.4 postgresql-client-9.4 libgdal1-dev libgeos-dev libproj-dev sqlite3 libsqlite3-dev libspatialite-dev"
     TEST_APPS: ""
 stages:
     - build
@@ -18,10 +18,12 @@ stages:
 before_script:
     - apt-get update -qq && apt-get install -y -qq $DEPENDENCIES
     - virtualenv env
+    - ln -s /usr/lib/libgeos-3.4.2.so /usr/lib/libgeos.so
+    - ldconfig
     - source env/bin/activate
     - pip install -r requirements/tests.txt
 test_django:
     stage: test
     script:
         - cd src/
-        - coverage run --source='.' manage.py test $TEST_APPS --settings={{cookiecutter.app_name}}.settings.tests && coverage report
+        - coverage run --source='.' manage.py test $TEST_APPS --nomigrations --settings={{cookiecutter.app_name}}.settings.tests && coverage report
