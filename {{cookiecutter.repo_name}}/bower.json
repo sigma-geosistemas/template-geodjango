@@ -1,0 +1,25 @@
+{
+  "name": "{{ cookiecutter.project_name }}",
+  "authors": [
+    "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"
+  ],
+  "description": "{{ cookiecutter.project_short_description }}",
+  "main": "",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "Proprietário",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
