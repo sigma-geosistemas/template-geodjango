@@ -3,4 +3,6 @@ setproctitle
 gunicorn
 opbeat
 django-dbbackup
+dropbox
+django-storages
 django-mailgun

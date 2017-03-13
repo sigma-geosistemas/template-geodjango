@@ -1,7 +1,8 @@
-psycopg2==2.6.1
+psycopg2==2.7.1
 Django=={{ cookiecutter.django_version }}
-djangorestframework==3.1.1
-djangorestframework-gis==0.8.2
-celery==3.1.18
-redis==2.10.3
+djangorestframework==3.6.2
+djangorestframework-gis==0.11.0
+djangorestframework-filters==0.9.1
+celery==4.0.2
+redis==2.10.5
 -e git+https://github.com/sigma-geosistemas/sigma.deploy#egg=deploy

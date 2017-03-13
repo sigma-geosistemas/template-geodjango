@@ -14,6 +14,7 @@ INSTALLED_APPS = (
 
     # 3rd party apps
     'rest_framework',
+    'rest_framework.auth',
     'rest_framework_gis',
     # our apps
 )
@@ -35,7 +36,12 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "templates")
+            os.path.join(BASE_DIR, "templates"),
+            # the below line is optional. we configure if you have an separate frontend
+            # MVC app (such as react, angular, etc) that you'd like to include.
+            {% if cookiecutter.js_frontend %}
+            os.path.join(BASE_DIR, "..", "..", "..", "{{cookie_cutter.app_name}}-app"),
+            {% endif %}
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -73,8 +79,36 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "site", "static"))
-MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", ".." "site", "media"))
+STATIC_INTERMEDIARY = os.path.join(BASE_DIR, "..", "..", "..", "{{cookiecutter.app_name}}-static")
+STATIC_ROOT = os.path.abspath(os.path.join(STATIC_INTERMEDIARY, "static"))
+MEDIA_ROOT = os.path.abspath(os.path.join(STATIC_INTERMEDIARY, "media"))
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+        'addresses': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        }
+    },
+}
+
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
+    logging.disable(logging.CRITICAL)
+
+CELERY_TASK_ALWAYS_EAGER = True
+
+MAINTENANCE_MODE_STATE_FILE_PATH = 'maintenance_mode_state.txt'
 
 try:
     from .drf import *
