@@ -6,3 +6,4 @@ django-dbbackup
 dropbox
 django-storages
 django-mailgun
+django-maintenance-mode
