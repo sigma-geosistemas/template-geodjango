@@ -1,6 +1,7 @@
 # coding: utf-8
 import os
 import sys
+import logging
 from .utils import get_env_variable
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
