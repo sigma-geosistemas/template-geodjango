@@ -11,4 +11,4 @@ SCHEDULERS = []
 if len(SCHEDULERS) > 0:
     CELERYBEAT_SCHEDULE = generate_celery_schedule(SCHEDULERS)
 else:
-    CELERYBEAT_SCHEDULE = {}}
+    CELERYBEAT_SCHEDULE = {}
