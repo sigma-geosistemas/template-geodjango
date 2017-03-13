@@ -40,7 +40,7 @@ TEMPLATES = [
             # the below line is optional. we configure if you have an separate frontend
             # MVC app (such as react, angular, etc) that you'd like to include.
             {% if cookiecutter.js_frontend %}
-            os.path.join(BASE_DIR, "..", "..", "..", "{{cookie_cutter.app_name}}-app"),
+            os.path.join(BASE_DIR, "..", "..", "..", "{{cookiecutter.app_name}}-app"),
             {% endif %}
         ],
         'APP_DIRS': True,
